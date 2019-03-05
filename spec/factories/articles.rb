@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :article do
-    title "Article test_title"
-    atext "Article test text"
+    title {"Article test_title"}
+    atext {"Article test text"}
 
     factory :article_with_comments do
       after :create do |article, evaluator|
