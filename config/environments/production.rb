@@ -1,6 +1,10 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  #added variable instead of secrets.yml (for production mode)
+  config.secret_key_base = ENV["SECRET_KEY_BASE"]
+  config.require_master_key = true
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 

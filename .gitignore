@@ -7,3 +7,14 @@ log/development.log
 
 tmp/
 db/test.sqlite3
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+
+log/production.log
+db/testdb.sqlite3
+log/test.log
+test.sqlite3
+development.sqlite3
+log/development.log
+log/test.log

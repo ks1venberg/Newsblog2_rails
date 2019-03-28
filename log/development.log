@@ -7818,3 +7818,639 @@ Processing by ArticlesController#index as HTML
 Completed 200 OK in 315ms (Views: 200.1ms | ActiveRecord: 10.5ms)
 
 
+Started GET "/" for 127.0.0.1 at 2019-03-12 19:29:48 +0300
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (106.5ms)
+Completed 200 OK in 2139ms (Views: 2050.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-13 10:19:09 +0300
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (136.1ms)
+Completed 200 OK in 2055ms (Views: 1963.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2019-03-13 10:19:41 +0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (28.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:3
+  Rendered articles/index.html.erb within layouts/application (150.8ms)
+Completed 200 OK in 420ms (Views: 257.3ms | ActiveRecord: 30.8ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2019-03-13 13:49:26 +0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (68.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:3
+  Rendered articles/index.html.erb within layouts/application (6005.6ms)
+Completed 200 OK in 18865ms (Views: 14293.3ms | ActiveRecord: 69.6ms)
+
+
+  [1m[35m (3512.9ms)[0m  [1m[35mCREATE DATABASE "db/blog_db_development" ENCODING = 'unicode'[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (14.6ms)[0m  [1m[35mCREATE DATABASE "db/blog_db_development" ENCODING = 'unicode'[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (2000.3ms)[0m  [1m[35mCREATE DATABASE "db/blog_db_production" ENCODING = 'unicode'[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (472.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "articles" CASCADE[0m
+  ↳ db/schema.rb:15
+  [1m[35m (662.6ms)[0m  [1m[35mCREATE TABLE "articles" ("id" bigserial primary key, "title" character varying, "atext" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments" CASCADE[0m
+  ↳ db/schema.rb:22
+  [1m[35m (78.6ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "author" character varying, "body" text, "article_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:22
+  [1m[35m (68.7ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_article_id" ON "comments"  ("article_id")[0m
+  ↳ db/schema.rb:22
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "contacts" CASCADE[0m
+  ↳ db/schema.rb:31
+  [1m[35m (18.6ms)[0m  [1m[35mCREATE TABLE "contacts" ("id" bigserial primary key, "email" character varying, "message" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:31
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:38
+  [1m[35m (14.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying, "last_sign_in_ip" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "username" character varying)[0m
+  ↳ db/schema.rb:38
+  [1m[35m (24.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  ↳ db/schema.rb:38
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  ↳ db/schema.rb:38
+  [1m[35m (22.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_username" ON "users"  ("username")[0m
+  ↳ db/schema.rb:38
+  [1m[35m (29.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (15.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20180628173257)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (2.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20180627175002),
+(20180625182800),
+(20180628171620),
+(20180615043650),
+(20180620123130);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (26.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' LIMIT 1[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2019-03-19 08:02:06.382593', '2019-03-19 08:02:06.382593') RETURNING "key"[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (5.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' LIMIT 1[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (17.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(222316542945591675)[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (33.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' LIMIT 1[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(222316542945591675)[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/bin/rake:23
+Started GET "/" for 127.0.0.1 at 2019-03-19 13:33:36 +0300
+  [1m[35m (4.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (128.9ms)
+Completed 200 OK in 2219ms (Views: 2008.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2019-03-19 13:33:52 +0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (17.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:3
+  Rendered articles/index.html.erb within layouts/application (32.7ms)
+Completed 200 OK in 242ms (Views: 114.0ms | ActiveRecord: 26.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2019-03-19 13:34:03 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/contacts" for 127.0.0.1 at 2019-03-19 13:34:14 +0300
+Processing by ContactsController#new as HTML
+  Rendering contacts/new.html.erb within layouts/application
+  Rendered contacts/new.html.erb within layouts/application (32.7ms)
+Completed 200 OK in 236ms (Views: 206.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/contacts" for 127.0.0.1 at 2019-03-19 13:34:44 +0300
+Processing by ContactsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"l3yV9U4wJvjgpuLea3pw94IJGWTeRAnQupcPRsW+5j6lMKy9VThAh3tDXTcIzzxsT1dXotdYWQW+XxhVJCiu5w==", "contact"=>{"email"=>"mymail@test.com", "message"=>"Hi! Its test mail"}, "commit"=>"Send message"}
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/contacts_controller.rb:9
+  [1m[36mContact Create (15.2ms)[0m  [1m[32mINSERT INTO "contacts" ("email", "message", "created_at", "updated_at") VALUES ('mymail@test.com', 'Hi! Its test mail', '2019-03-19 10:34:44.782626', '2019-03-19 10:34:44.782626') RETURNING "id"[0m
+  ↳ app/controllers/contacts_controller.rb:9
+  [1m[35m (29.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/contacts_controller.rb:9
+  Rendering contacts/create.html.erb within layouts/application
+  Rendered contacts/create.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 206ms (Views: 99.0ms | ActiveRecord: 62.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-19 13:34:59 +0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 116ms (Views: 112.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-03-19 13:35:45 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (4.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (52.1ms)
+Completed 200 OK in 224ms (Views: 155.3ms | ActiveRecord: 14.1ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2019-03-19 13:36:05 +0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"s67Uz6pT2ou2ZGDRtRM095UOW5ByPglLsM9xkXVsQD44ciCEt8wcyFCvW7P0deWOn4kg+nBb3fGPom8oCmLz/w==", "user"=>{"email"=>"abc@mail.ru", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (20.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = 'abc@mail.ru' ORDER BY "users"."id" ASC LIMIT 1[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Completed 401 Unauthorized in 228ms (ActiveRecord: 20.1ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"s67Uz6pT2ou2ZGDRtRM095UOW5ByPglLsM9xkXVsQD44ciCEt8wcyFCvW7P0deWOn4kg+nBb3fGPom8oCmLz/w==", "user"=>{"email"=>"abc@mail.ru", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (4.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 418ms (Views: 109.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-23 09:27:08 +0300
+  [1m[35m (22.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (80.9ms)
+Completed 200 OK in 1196ms (Views: 1145.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-03-23 09:28:07 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (3.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (64.4ms)
+Completed 200 OK in 332ms (Views: 167.6ms | ActiveRecord: 50.8ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2019-03-23 09:28:14 +0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"V89qtHlyJoseaVKCPx6HsTY1Rhi7mlr4Ouulk3fXeYpoLw+aRtVTSCCddVemXagRHLfjblrsm0tCKRql23htSw==", "user"=>{"email"=>"abc@mail.ru", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (32.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = 'abc@mail.ru' ORDER BY "users"."id" ASC LIMIT 1[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Completed 401 Unauthorized in 64ms (ActiveRecord: 32.4ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"V89qtHlyJoseaVKCPx6HsTY1Rhi7mlr4Ouulk3fXeYpoLw+aRtVTSCCddVemXagRHLfjblrsm0tCKRql23htSw==", "user"=>{"email"=>"abc@mail.ru", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (3.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (12.7ms)
+Completed 200 OK in 441ms (Views: 148.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2019-03-23 09:28:24 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper.devise_error_messages!`
+is deprecated and it will be removed in the next major version.
+To customize the errors styles please run `rails g devise:views` and modify the
+`devise/shared/error_messages` partial.
+ (called from block in _app_views_devise_registrations_new_html_erb__201058651639625782_69862516049020 at /home/venberg/Newsblog2_rails/app/views/devise/registrations/new.html.erb:4)
+  Rendered devise/shared/_links.html.erb (4.9ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (29.8ms)
+Completed 200 OK in 192ms (Views: 188.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2019-03-23 09:29:20 +0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pEZRkGWh1bdGVfyC47HdZVVJ3ud7EhgtV1zdjwkFDnotaMbT7KbMYDVeljWirj5LRNd8ooqvkYKioLrIB2LPrg==", "user"=>{"email"=>"abc@mail.ru", "username"=>"Abter", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (5.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'abc@mail.ru' LIMIT 1[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (70.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES ('abc@mail.ru', '$2a$11$dGVODmvKG98/OPT5sIaziub/3Y7H2tAQk4L.yQCpO2ZP2Nqk2YB96', '2019-03-23 06:29:21.006157', '2019-03-23 06:29:21.006157', 'Abter') RETURNING "id"[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (33.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (1.3ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = 1, "current_sign_in_at" = '2019-03-23 06:29:21.117254', "last_sign_in_at" = '2019-03-23 06:29:21.117254', "current_sign_in_ip" = '127.0.0.1', "last_sign_in_ip" = '127.0.0.1', "updated_at" = '2019-03-23 06:29:21.120632' WHERE "users"."id" = 1[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 385ms (ActiveRecord: 113.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-23 09:29:21 +0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  ↳ app/views/layouts/application.html.erb:19
+Completed 200 OK in 153ms (Views: 146.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/about" for 127.0.0.1 at 2019-03-23 09:29:36 +0300
+Processing by PagesController#about as HTML
+  Rendering pages/about.html.erb within layouts/application
+  Rendered pages/about.html.erb within layouts/application (1.3ms)
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  ↳ app/views/layouts/application.html.erb:19
+Completed 200 OK in 99ms (Views: 90.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2019-03-23 09:29:43 +0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (6.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:3
+  Rendered articles/index.html.erb within layouts/application (17.6ms)
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  ↳ app/views/layouts/application.html.erb:19
+Completed 200 OK in 131ms (Views: 92.5ms | ActiveRecord: 12.4ms)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2019-03-23 09:29:53 +0300
+Processing by ArticlesController#new as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 114ms (Views: 97.1ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/articles" for 127.0.0.1 at 2019-03-23 09:34:48 +0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lO2UkBlj3XcoGUFqbsUVMXCLU/INqkQUT5neR4Am07K7wB47LHiPl7eEmexUehpjiGjSmqf76psffDEY+d60lg==", "article"=>{"title"=>"WMFU: Records & Comics for Sale on eBay!", "atext"=>"Support WFMU and bid on our items listed on eBay. All the proceeds go to WFMU and the goods go right to YOU. It’s a win, win! More items added often, but you can bid on the following right now –Tito Puente “Quatro: The Definitive Collection” CD Box Set, Westledge Sounds LP, The Stranglers “Nice ‘n’ Sleazy” 45 (Promo Copy), The Traits “Nobody Loves The Hulk” 45, Incredible Hulk #340, Wolverine Issue #1"}, "commit"=>"Save Article"}
+  [1m[36mUser Load (56.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mArticle Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "articles" WHERE "articles"."title" = 'WMFU: Records & Comics for Sale on eBay!' LIMIT 1[0m
+  ↳ app/controllers/articles_controller.rb:20
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/articles_controller.rb:22
+  [1m[36mCACHE Article Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "articles" WHERE "articles"."title" = 'WMFU: Records & Comics for Sale on eBay!' LIMIT 1[0m
+  ↳ app/controllers/articles_controller.rb:22
+  [1m[36mArticle Create (72.5ms)[0m  [1m[32mINSERT INTO "articles" ("title", "atext", "created_at", "updated_at") VALUES ('WMFU: Records & Comics for Sale on eBay!', 'Support WFMU and bid on our items listed on eBay. All the proceeds go to WFMU and the goods go right to YOU. It’s a win, win! More items added often, but you can bid on the following right now –Tito Puente “Quatro: The Definitive Collection” CD Box Set, Westledge Sounds LP, The Stranglers “Nice ‘n’ Sleazy” 45 (Promo Copy), The Traits “Nobody Loves The Hulk” 45, Incredible Hulk #340, Wolverine Issue #1', '2019-03-23 06:34:50.051426', '2019-03-23 06:34:50.051426') RETURNING "id"[0m
+  ↳ app/controllers/articles_controller.rb:22
+  [1m[35m (45.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/articles_controller.rb:22
+Redirected to http://localhost:3000/articles/1
+Completed 302 Found in 499ms (ActiveRecord: 210.0ms)
+
+
+Started GET "/articles/1" for 127.0.0.1 at 2019-03-23 09:34:50 +0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.8ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = 1 LIMIT 1[0m
+  ↳ app/controllers/articles_controller.rb:13
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mComment Load (11.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = 1[0m
+  ↳ app/views/articles/show.html.erb:9
+  Rendered articles/show.html.erb within layouts/application (919.9ms)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  ↳ app/views/layouts/application.html.erb:19
+Completed 200 OK in 1433ms (Views: 1333.8ms | ActiveRecord: 23.7ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2019-03-23 09:35:06 +0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (2.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:3
+  Rendered articles/index.html.erb within layouts/application (43.0ms)
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  ↳ app/views/layouts/application.html.erb:19
+Completed 200 OK in 156ms (Views: 99.7ms | ActiveRecord: 40.4ms)
+
+
+Started GET "/articles/1" for 127.0.0.1 at 2019-03-23 09:35:26 +0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = 1 LIMIT 1[0m
+  ↳ app/controllers/articles_controller.rb:13
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = 1[0m
+  ↳ app/views/articles/show.html.erb:9
+  Rendered articles/show.html.erb within layouts/application (23.3ms)
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  ↳ app/views/layouts/application.html.erb:19
+Completed 200 OK in 134ms (Views: 118.6ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/articles/1/edit" for 127.0.0.1 at 2019-03-23 09:35:29 +0300
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mArticle Load (1.2ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = 1 LIMIT 1[0m
+  ↳ app/controllers/articles_controller.rb:30
+  Rendering articles/edit.html.erb within layouts/application
+  Rendered articles/edit.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 582ms (Views: 92.5ms | ActiveRecord: 2.0ms)
+
+
+Started DELETE "/articles/1" for 127.0.0.1 at 2019-03-23 09:35:37 +0300
+Processing by ArticlesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"EatBG3jl4XGxa0avjGTA1sFg10PHR1lEJh9n7bF6BmI+hsuwTf6zkS72nim228+EOYNWK20W98t2+oiyyIJhRg==", "id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mArticle Load (2.1ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = 1 LIMIT 1[0m
+  ↳ app/controllers/articles_controller.rb:45
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/articles_controller.rb:46
+  [1m[36mArticle Destroy (0.9ms)[0m  [1m[31mDELETE FROM "articles" WHERE "articles"."id" = 1[0m
+  ↳ app/controllers/articles_controller.rb:46
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/articles_controller.rb:46
+Redirected to http://localhost:3000/articles
+Completed 302 Found in 17ms (ActiveRecord: 6.2ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2019-03-23 09:35:37 +0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.9ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:3
+  Rendered articles/index.html.erb within layouts/application (5.7ms)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  ↳ app/views/layouts/application.html.erb:19
+Completed 200 OK in 131ms (Views: 126.1ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2019-03-23 09:35:44 +0300
+Processing by ArticlesController#new as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 104ms (Views: 91.0ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/articles" for 127.0.0.1 at 2019-03-23 09:37:59 +0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ERjTKCRW3MO/6w3WEbxmWyUlJuwR7rGzAnyb1teyx/g+NVmDEU2OIyB21VArA2kJ3canhLu/HzxSmXSJrkqg3A==", "article"=>{"title"=>"WMFU sells Records & Comics on eBay!", "atext"=>"Right now you can bid on the items below and there are more to come!\r\n\r\n100% of the proceeds go directly to help the station."}, "commit"=>"Save Article"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mArticle Exists (2.3ms)[0m  [1m[34mSELECT  1 AS one FROM "articles" WHERE "articles"."title" = 'WMFU sells Records & Comics on eBay!' LIMIT 1[0m
+  ↳ app/controllers/articles_controller.rb:20
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/articles_controller.rb:22
+  [1m[36mCACHE Article Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "articles" WHERE "articles"."title" = 'WMFU sells Records & Comics on eBay!' LIMIT 1[0m
+  ↳ app/controllers/articles_controller.rb:22
+  [1m[36mArticle Create (0.9ms)[0m  [1m[32mINSERT INTO "articles" ("title", "atext", "created_at", "updated_at") VALUES ('WMFU sells Records & Comics on eBay!', 'Right now you can bid on the items below and there are more to come!
+
+100% of the proceeds go directly to help the station.', '2019-03-23 06:38:00.282489', '2019-03-23 06:38:00.282489') RETURNING "id"[0m
+  ↳ app/controllers/articles_controller.rb:22
+  [1m[35m (54.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/articles_controller.rb:22
+Redirected to http://localhost:3000/articles/2
+Completed 302 Found in 77ms (ActiveRecord: 59.3ms)
+
+
+Started GET "/articles/2" for 127.0.0.1 at 2019-03-23 09:38:00 +0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mArticle Load (1.4ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = 2 LIMIT 1[0m
+  ↳ app/controllers/articles_controller.rb:13
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = 2[0m
+  ↳ app/views/articles/show.html.erb:9
+  Rendered articles/show.html.erb within layouts/application (14.2ms)
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  ↳ app/views/layouts/application.html.erb:19
+Completed 200 OK in 511ms (Views: 479.5ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2019-03-23 09:38:13 +0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:3
+  Rendered articles/index.html.erb within layouts/application (6.4ms)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  ↳ app/views/layouts/application.html.erb:19
+Completed 200 OK in 157ms (Views: 95.7ms | ActiveRecord: 1.7ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2019-03-23 09:38:28 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"QCjkVzT0Z3T/mXCmEGj4agTIrD0mb29+H6ybX1v9b4lvBW78Ae81lGAEqCAq1/c4/CstVYw+wfFPSXQAIgUIrQ=="}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 333ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-23 09:38:28 +0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 104ms (Views: 88.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2019-03-23 09:39:30 +0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (1.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:3
+  Rendered articles/index.html.erb within layouts/application (20.6ms)
+Completed 200 OK in 118ms (Views: 101.6ms | ActiveRecord: 13.2ms)
+
+
+Started DELETE "/articles/2" for 127.0.0.1 at 2019-03-23 09:39:37 +0300
+Processing by ArticlesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"+jEqjwAoL83Hd5yz08ey8zcqIsiqqbGIzafjKTwJX5a4OnQSATxJHAGv/bl2BZyDvf96JKkpFe/U+Ur+oNLL2g==", "id"=>"2"}
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-03-23 09:39:37 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (3.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (22.6ms)
+Completed 200 OK in 149ms (Views: 146.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-27 12:42:29 +0300
+  [1m[35m (43.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (94.9ms)
+Completed 200 OK in 1937ms (Views: 1851.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-03-27 12:42:53 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (4.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (82.6ms)
+Completed 200 OK in 347ms (Views: 205.1ms | ActiveRecord: 81.1ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2019-03-27 12:42:58 +0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"76mDNtZ7ZbLkjIqIXxZ7Bl5woN/LZA0erTGWISacVGi6a0oqg7PMPL5nGwiGP0HcXgcqbkQ5bGxBmtZdjafL+w==", "user"=>{"email"=>"abc@mail.ru", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (42.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = 'abc@mail.ru' ORDER BY "users"."id" ASC LIMIT 1[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (64.3ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = '2019-03-27 09:42:59.412101', "sign_in_count" = 2, "updated_at" = '2019-03-27 09:42:59.416212' WHERE "users"."id" = 1[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (12.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /home/venberg/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 541ms (ActiveRecord: 119.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-27 12:42:59 +0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  ↳ app/views/layouts/application.html.erb:19
+Completed 200 OK in 160ms (Views: 154.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2019-03-27 12:43:08 +0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (15.9ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:3
+  Rendered articles/index.html.erb within layouts/application (58.4ms)
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  ↳ app/views/layouts/application.html.erb:19
+Completed 200 OK in 267ms (Views: 180.5ms | ActiveRecord: 28.3ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2019-03-27 12:46:26 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/posts"):
+  
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/home" for 127.0.0.1 at 2019-03-27 12:46:37 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/home"):
+  
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/about" for 127.0.0.1 at 2019-03-27 12:46:45 +0300
+Processing by PagesController#about as HTML
+  Rendering pages/about.html.erb within layouts/application
+  Rendered pages/about.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (16.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1[0m
+  ↳ app/views/layouts/application.html.erb:19
+Completed 200 OK in 470ms (Views: 435.4ms | ActiveRecord: 16.2ms)
+
+
