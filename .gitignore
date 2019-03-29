@@ -18,3 +18,4 @@ test.sqlite3
 development.sqlite3
 log/development.log
 log/test.log
+log/development.log
