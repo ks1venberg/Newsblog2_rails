@@ -2,12 +2,14 @@
 <p>this is home page</p>
 <hr/>
 
-  	<h2><%= t('articles.list') %></h2>
+<div class="container">
+	<h2><%= t('articles.list') %></h2>
 
-			<% @articles.each do |article| %>
-  
-				<h3><%= article.title %></h3>
-      			<p><%= article.atext %></p>
-				<p><%= link_to 'Show full text', article_path(article) %></p>
-				<hr/>
-			<% end %>
+		<% @articles.each do |article| %>
+
+			<h3><%= article.title %></h3>
+    			<p><%= article.atext %></p>
+			<p><%= link_to 'Show full text', article_path(article) %></p>
+			<hr/>
+		<% end %>
+</div>
