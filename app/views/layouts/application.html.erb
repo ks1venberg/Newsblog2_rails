@@ -17,8 +17,8 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" >NB</a>
+  <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
+    <a class="navbar-brand rounded-lg shadow-sm text-center" style="width: 50px; background-color: rgba(0,0,255,.1)">NB</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -30,21 +30,21 @@
         <a class="nav-item nav-link" href="<%= new_contacts_path %>">Contact us</a>
         <a class="nav-item nav-link" href="<%= about_path %>">About blog</a>
       </div>
+        <div class="mx-5 text-muted">
+          <% if user_signed_in? %>
+          Hello, <%= current_user.username %> | <%= link_to 'Sign Out!', destroy_user_session_path, method: :delete %>
+          <% else %><%= link_to 'Sign In!', new_user_session_path %>
+          <% end %>
+        </div>
     </div>
   </nav>
 
 </head>
 
 <body>
-
-   <% if user_signed_in? %>
-      Hello, <%= current_user.username %> | <%= link_to 'Sign Out!', destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Sign In!', new_user_session_path %>
-    <% end %>
   
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 
   <%= yield %>
 
