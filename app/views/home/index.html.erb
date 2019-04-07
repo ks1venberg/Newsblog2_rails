@@ -1,15 +1,19 @@
-<h1><%= t('pages.welcome') %></h1>
-<p>this is home page</p>
-<hr/>
+<div class="container-fluid pl-5 pr-5" style="text-align: center">
+	<h1 style="font-size: 65px; text-shadow: 1px 1px 10px">News Blog</h1>
+	<p><sup><i><%= t('pages.welcome')%></i></sup></p>
+	<hr/>
+</div>
 
-<div class="container">
-	<h2><%= t('articles.list') %></h2>
+<div class="container-fluid pl-5 pr-5">
+	<h1><i>Recent articles:</i></h1>
+	<br/>
 
+	<div class="container-fluid pl-7">
 		<% @articles.each do |article| %>
-
-			<h3><%= article.title %></h3>
-    			<p><%= article.atext %></p>
-			<p><%= link_to 'Show full text', article_path(article) %></p>
-			<hr/>
+		<h3><%= article.title %></h3>
+			<p><%= article.atext %></p>
+				<p><%= link_to 'Show full text', article_path(article) %></p>
+					<hr/>
 		<% end %>
+	</div>
 </div>

@@ -30,10 +30,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
 
   pages:
-    welcome: "Welcome to NEWS blog!"
+    welcome: "Welcome to site! Discover and write news with pleasure."
     about: "About this blog"
     terms: "Terms or use"
 
@@ -43,7 +42,7 @@ en:
   articles:
     new: "New article"
     edit: "Edit this article"
-    list: "List of articles"
+    list: "All our articles"
 
   comments:
     c_head: "Comments to this article"
