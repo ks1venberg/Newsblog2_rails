@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   
   def index
-  	@articles = Article.all
+  	@articles = Article.order(id: :desc).last(4)
   end
 end

@@ -10,9 +10,9 @@
 
 	<div class="container-fluid pl-7">
 		<% @articles.each do |article| %>
-		<h3><%= article.title %></h3>
+		<h3><%= article.title %></h3><sup>added <%= article.created_at%></sup>
 			<p><%= article.atext %></p>
-				<p><%= link_to 'Show full text', article_path(article) %></p>
+				<p><%= link_to 'Show with comments', article_path(article) %></p>
 					<hr/>
 		<% end %>
 	</div>
