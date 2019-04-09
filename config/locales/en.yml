@@ -42,7 +42,7 @@ en:
   articles:
     new: "New article"
     edit: "Edit this article"
-    list: "All our articles"
+    list: "All our articles:"
 
   comments:
     c_head: "Comments to this article"
