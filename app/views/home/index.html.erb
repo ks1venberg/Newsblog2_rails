@@ -8,12 +8,18 @@
 	<h1><i>Recent articles:</i></h1>
 	<br/>
 
-	<div class="container-fluid pl-7">
+	<div class="container-fluid pl-5 pl-5">
+
 		<% @articles.each do |article| %>
-		<h3><%= article.title %></h3><sup>added <%= article.created_at%></sup>
-			<p><%= article.atext %></p>
-				<p><%= link_to 'Show with comments', article_path(article) %></p>
-					<hr/>
+			<div class="row">
+				<h3><%= article.title %></h3><sup>added <%= article.created_at%></sup>
+			</div>
+			<div class="row" style="margin-bottom: -5px">
+				<p style="margin-bottom:-2px"><%= article.atext %></p>
+				<small><%= link_to 'Show with comments', article_path(article) %></small>
+			</div>
+			<hr/>
 		<% end %>
+
 	</div>
 </div>
