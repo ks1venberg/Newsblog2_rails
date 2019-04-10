@@ -1,36 +1,39 @@
-<h1><%= @article.title %></h1>
+<div class="container-fluid pl-5 pr-5">
+	<h2><%= @article.title %></h2>
+	  <p><b><%= @article.atext %></b></p>
 
-  	<p><b><%= @article.atext %></b></p>
+	  	<h6><i><%= t('comments.c_head') %></i></h6>
+			<% @article.comments.each do |comment| %>
+				<p>
+					<i><%= comment.author %> said :</i>
+					<%= comment.body %>
+				</p>
+		  <% end %>
+	<hr/>
+	<br/>
 
-   	<br />
-  	<br />
+</div>
 
-  	<h3><%= t('comments.c_head') %></h3>
-		<% @article.comments.each do |comment| %>
-			<p>
-			 <i><%= comment.author %> said :</i>
-			<%= comment.body %>
-			</p>
-	  	<% end %>
+<div class="container-fluid pl-5 pr-5">
+	<h5><%= t('comments.add') %></h5>
 
-   	<br />
-  	<br />
-
-
-	<h3><%= t('comments.add') %></h3>
 		<%= form_for ([@article, @article.comments.build]) do |f| %>
 		<p>
 			<%= f.label :author %><br />
-			<%= f.text_field :author %>
+				<% if user_signed_in? %>
+					<%= f.text_field :author, value: current_user.username %>
+				<% else %>
+					<%= f.text_field :author %>
+    		<% end %>
 		</p>
 
 		<p>
 			<%= f.label :body %><br />
-			<%= f.text_area :body %>
+			<%= f.text_area :body, class:"rounded"%>
 		</p>
 
-		<p>
-			<%= f.submit %><br />
-		</p>
+		<p><%= f.submit %></p>
+		<br/>
 
 		<% end %>
+</div>
