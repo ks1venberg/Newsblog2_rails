@@ -15,8 +15,8 @@
 				<h3><%= article.title %></h3><sup>added <%= article.created_at%></sup>
 			</div>
 			<div class="row" style="margin-bottom: -5px">
-				<p style="margin-bottom:-2px"><%= article.atext %></p>
-				<small><%= link_to 'Show with comments', article_path(article) %></small>
+				<p style="margin-bottom:-2px"><%= article.atext %><br/>
+				<small><%= link_to 'Show with comments', article_path(article) %></small></p>
 			</div>
 			<hr/>
 		<% end %>
