@@ -1,31 +1,33 @@
-<h2><%= t('contacts.contact_us') %></h2>
+<div class="container-fluid pl-5 pr-5">
+	<h1><i><%= t('contacts.contact_us') %></i></h1>
+	<p><sup><i><%= t('contacts.contact_msg')%></i></sup></p>
+	<hr/>
+	<br/>
 
+	<%= form_for :contact, url: contacts_path do |f| %>
+		<% if @contact && @contact.errors.any? %>
+			<p>
+				<ul>
+				<% @contact.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+				</ul>
+			</p>
+		<% end %>
 
-<%= form_for :contact, url: contacts_path do |f| %>
-	<!-- Analog - peremennaya v rails  	url: articles_path -->
-	
-	<% if @contact && @contact.errors.any? %>
 		<p>
-			<ul>
-			<% @contact.errors.full_messages.each do |msg| %>
-				<li><%= msg %></li>
-			<% end %>
-			</ul>
+			<%= f.label :email %><br />
+			<%= f.text_field :email, style:"width:700px" %>
 		</p>
+
+		<p>
+			<%= f.label :message %><br />
+			<%= f.text_area :message, class:"rounded", style:"width:700px" %>
+		</p>
+
+		<p>
+			<%= f.submit 'Send message' %><br />
+		</p>
+
 	<% end %>
-
-	<p>
-		<%= f.label :email %><br />
-		<%= f.text_field :email %>
-	</p>
-
-	<p>
-		<%= f.label :message %><br />
-		<%= f.text_area :message %>
-	</p>
-
-	<p>
-		<%= f.submit 'Send message' %><br />
-	</p>
-
-<% end %>
+</div>
