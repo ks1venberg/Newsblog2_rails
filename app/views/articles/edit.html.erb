@@ -1,20 +1,22 @@
-<h1><%= t('articles.edit') %></h1>
+<div class="container-fluid pl-5 pr-5">
+	<h1><i><%= t('articles.edit') %></i></h1>
+	<hr/>
+	<br/>
 
-<%= form_for :article, url: article_path(@article), method: :put do |f| %>
-	<!-- Analog - peremennaya v rails  	url: articles_path -->
+	<%= form_for :article, url: article_path(@article), method: :put do |f| %>
+		<p>
+			<%= f.label :title %><br />
+			<%= f.text_field :title , style:"width:700px"%>
+		</p>
 
-	<p>
-		<%= f.label :title %><br />
-		<%= f.text_field :title %>
-	</p>
+		<p>
+			<%= f.label 'Article text' %><br />
+			<%= f.text_area :atext , class:"rounded", style:"width:700px", rows: "5"%>
+		</p>
 
-	<p>
-		<%= f.label 'Article text' %><br />
-		<%= f.text_area :atext %>
-	</p>
+		<p>
+			<%= f.submit %><br />
+		</p>
 
-	<p>
-		<%= f.submit %><br />
-	</p>
-
-<% end %>
+	<% end %>
+</div>
